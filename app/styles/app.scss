@@ -1,0 +1,47 @@
+@import 'material-design-lite';
+
+html, body {
+  margin: 20px;
+}
+
+body {
+  font-family: Lato,Helvetica,Arial,sans-serif;
+}
+
+li.person {
+  transition: background-color 0.4s;
+
+  background-color: transparent;
+
+  // color: white;
+  // padding: 3px;
+  // margin: 5px;
+  // list-style-type: none;
+  // border-radius: 2px;
+  // border: 2px solid transparent;
+  // cursor: pointer;
+
+  &.present {
+    background-color: orange;
+  }
+
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.mdl-list {
+  width: 300px;
+}
+
+.person-menu {
+  display: inline;
+}
+
+.sect-entry {
+  margin-top: 50px;
+}
+
+ul {
+  list-style-type: none;
+}

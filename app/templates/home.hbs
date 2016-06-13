@@ -1,0 +1,33 @@
+<ul class="mdl-list">
+  {{#each model as |person|}}
+  <li class="mdl-list__item person {{person.present}}">
+    <span class="mdl-list__item-primary-content person-name" {{action 'togglePresent' person}}>
+      {{mdl-icon class='mdl-list__item-avatar' icon='person'}}
+      {{person.name}}
+    </span>
+    {{!-- <span class="mdl-list__item-secondary-content">
+      {{mdl-switch value=person.present text='Present'}}
+    </span> --}}
+    <span class="mdl-list__item-secondary-content">
+      {{#mdl-menu align='bottom-right' class='person-menu right'}}
+        {{#mdl-menu-item action=(action 'removePerson' person) age=36}}Remove{{/mdl-menu-item}}
+      {{/mdl-menu}}
+    </span>
+    {{!-- <span class="mdl-list__item-secondary-action">
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
+        <input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" checked />
+      </label>
+    </span> --}}
+  </li>
+  {{/each}}
+</ul>
+
+<div class="sect-random">
+  {{#mdl-button isRaised=true action='pickWinner' disabled=notEnoughPeople}}Standup!{{/mdl-button}}
+</div>
+
+<div class="sect-winner">{{randomWinner.name}}</div>
+
+<div class="sect-entry">
+  {{mdl-textfield label='Name' value=newName length="10"}}{{mdl-button isRaised=true text='Add' action='addPerson'}}
+</div>
