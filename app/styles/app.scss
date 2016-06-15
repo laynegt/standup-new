@@ -1,7 +1,7 @@
 @import 'material-design-lite';
 
 html, body {
-  margin: 20px;
+  // margin: 20px;
 }
 
 body {
@@ -12,9 +12,14 @@ body {
   cursor: pointer;
 }
 
+.mdl-grid {
+  padding-left: 30px;
+}
+
 .mdl-list {
   width: 500px;
-  padding-left: 0;
+  margin: 0;
+  padding: 0;
 
   li {
     line-height: 36px;

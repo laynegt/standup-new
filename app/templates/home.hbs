@@ -1,21 +1,29 @@
-<ul class="mdl-list">
-  {{#each model as |person|}}
-  <li class="mdl-list__item person {{if person.present 'present' 'absent'}} {{if (eq person.name randomWinner.name) 'winner'}}">
-    <div class="mdl-list__item-primary-content person-name" {{action 'togglePresent' person}}>
-      {{mdl-icon class="mdl-list__item-avatar" badge=(if (eq person.name randomWinner.name) '★') icon='person'}}
-      {{person.name}}
-    </div>
-    <div class="mdl-list__item-secondary-content menu">
-      {{#mdl-menu align='bottom-right' class='person-menu right'}}
-        {{#mdl-menu-item action=(action 'removePerson' person) age=36}}Remove{{/mdl-menu-item}}
-      {{/mdl-menu}}
-    </div>
-  </li>
-  {{/each}}
-</ul>
+{{#mdl-nav title='Standup' fixedHeader=true}}
+  {{!-- {{mdl-nav-item name='Home'   route='buttons'}}
+  {{mdl-nav-item name='People' route='tabs'}} --}}
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+      <ul class="mdl-list">
+        {{#each model as |person|}}
+        <li class="mdl-list__item person {{if person.present 'present' 'absent'}} {{if (eq person.name randomWinner.name) 'winner'}}">
+          <div class="mdl-list__item-primary-content person-name" {{action 'togglePresent' person}}>
+            {{mdl-icon class="mdl-list__item-avatar" badge=(if (eq person.name randomWinner.name) '★') icon='person'}}
+            {{person.name}}
+          </div>
+          <div class="mdl-list__item-secondary-content menu">
+            {{#mdl-menu align='bottom-right' class='person-menu right'}}
+              {{#mdl-menu-item action=(action 'removePerson' person) age=36}}Remove{{/mdl-menu-item}}
+            {{/mdl-menu}}
+          </div>
+        </li>
+        {{/each}}
+      </ul>
 
-<form class="sect-entry" {{action 'addPerson' on='submit'}}>
-  {{mdl-textfield label='Name' value=newName length="10" enter='addPerson'}}{{mdl-button type='submit' isRaised=true text='Add' action='addPerson'}}
-</form>
+      <form class="sect-entry" {{action 'addPerson' on='submit'}}>
+        {{mdl-textfield label='Name' value=newName length="10" enter='addPerson'}}{{mdl-button type='submit' isRaised=true text='Add' action='addPerson'}}
+      </form>
 
-{{mdl-button isFloating=true icon='gavel' action='pickWinner' disabled=notEnoughPeople}}
+      {{mdl-button isFloating=true icon='gavel' action='pickWinner' disabled=notEnoughPeople}}
+	  </div>
+  </div>
+{{/mdl-nav}}
