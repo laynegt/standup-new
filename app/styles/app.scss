@@ -8,21 +8,48 @@ body {
   font-family: Lato,Helvetica,Arial,sans-serif;
 }
 
+[data-ember-action]:not(:disabled) {
+  cursor: pointer;
+}
+
+.mdl-list {
+  width: 500px;
+  padding-left: 0;
+
+  li {
+    line-height: 36px;
+    // border-top: 1px solid gainsboro;
+  }
+}
+
+.mdl-list__item > div {
+  display: inline-block;
+
+  &.person-name {
+    width: 90%;
+  }
+}
+
+.mdl-list__item-avatar {
+  margin-right: 30px;
+  vertical-align: middle;
+
+  &.material-icons {
+    font-size: 30px;
+  }
+}
+
 li.person {
   transition: background-color 0.4s;
 
   background-color: transparent;
 
-  // color: white;
-  // padding: 3px;
-  // margin: 5px;
-  // list-style-type: none;
-  // border-radius: 2px;
-  // border: 2px solid transparent;
-  // cursor: pointer;
+  &.absent {
+    color: silver;
+  }
 
-  &.present {
-    background-color: orange;
+  &.winner {
+    background-color: lightyellow;
   }
 
   &:hover {
@@ -30,16 +57,16 @@ li.person {
   }
 }
 
-.mdl-list {
-  width: 300px;
-}
-
 .person-menu {
   display: inline;
 }
 
 .sect-entry {
-  margin-top: 50px;
+  margin-top: 20px;
+
+  button {
+    margin-left: 10px;
+  }
 }
 
 ul {

@@ -1,33 +1,21 @@
 <ul class="mdl-list">
   {{#each model as |person|}}
-  <li class="mdl-list__item person {{person.present}}">
-    <span class="mdl-list__item-primary-content person-name" {{action 'togglePresent' person}}>
-      {{mdl-icon class='mdl-list__item-avatar' icon='person'}}
+  <li class="mdl-list__item person {{if person.present 'present' 'absent'}} {{if (eq person.name randomWinner.name) 'winner'}}">
+    <div class="mdl-list__item-primary-content person-name" {{action 'togglePresent' person}}>
+      {{mdl-icon class="mdl-list__item-avatar" badge=(if (eq person.name randomWinner.name) '★') icon='person'}}
       {{person.name}}
-    </span>
-    {{!-- <span class="mdl-list__item-secondary-content">
-      {{mdl-switch value=person.present text='Present'}}
-    </span> --}}
-    <span class="mdl-list__item-secondary-content">
+    </div>
+    <div class="mdl-list__item-secondary-content menu">
       {{#mdl-menu align='bottom-right' class='person-menu right'}}
         {{#mdl-menu-item action=(action 'removePerson' person) age=36}}Remove{{/mdl-menu-item}}
       {{/mdl-menu}}
-    </span>
-    {{!-- <span class="mdl-list__item-secondary-action">
-      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
-        <input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" checked />
-      </label>
-    </span> --}}
+    </div>
   </li>
   {{/each}}
 </ul>
 
-<div class="sect-random">
-  {{#mdl-button isRaised=true action='pickWinner' disabled=notEnoughPeople}}Standup!{{/mdl-button}}
-</div>
+<form class="sect-entry" {{action 'addPerson' on='submit'}}>
+  {{mdl-textfield label='Name' value=newName length="10" enter='addPerson'}}{{mdl-button type='submit' isRaised=true text='Add' action='addPerson'}}
+</form>
 
-<div class="sect-winner">{{randomWinner.name}}</div>
-
-<div class="sect-entry">
-  {{mdl-textfield label='Name' value=newName length="10"}}{{mdl-button isRaised=true text='Add' action='addPerson'}}
-</div>
+{{mdl-button isFloating=true icon='gavel' action='pickWinner' disabled=notEnoughPeople}}
